@@ -16,7 +16,7 @@ index 0f9bffe..910723b 100755
 --- a/arch/arm/cpu/aml_meson/config.mk
 +++ b/arch/arm/cpu/aml_meson/config.mk
 @@ -1,4 +1,4 @@
--CROSS_COMPILE=arm-none-eabi-
+-CROSS_COMPILE?=arm-none-eabi-
 +CROSS_COMPILE=armv7a-hardfloat-linux-gnueabi-
  ARM_CPU=cortex-a9
  PLATFORM_CPPFLAGS += $(call cc-option,-mcpu=cortex-a9 -ffixed-r8 -mno-long-calls  -Wall -fPIC )

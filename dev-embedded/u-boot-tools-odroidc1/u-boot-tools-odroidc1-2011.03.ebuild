@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 ETYPE=sources
 
@@ -18,12 +18,14 @@ LICENSE="GPL-2"
 
 KEYWORDS="~arm"
 
+PATCHES=(	"${FILESDIR}"/000_change_abi.patch	)
+
 src_unpack() {
     git-r3_src_unpack
 }
 
 src_prepare() {
-    epatch "${FILESDIR}"/000_change_abi.patch
+    default
 }
 
 src_compile() {
