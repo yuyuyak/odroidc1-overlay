@@ -1,4 +1,4 @@
-EAPI=5
+EAPI=6
 
 inherit git-r3
 
@@ -16,8 +16,10 @@ DEPEND="
 RDEPEND="${DEPEND}
 	media-libs/mesa[gles1,gles2]"
 
+PATCHES=(	"${FILESDIR}/0001-Fix-Makefiles.patch" )
+
 src_prepare() {
-	epatch "${FILESDIR}/0001-Fix-Makefiles.patch"
+	default
 }
 
 src_compile() {
