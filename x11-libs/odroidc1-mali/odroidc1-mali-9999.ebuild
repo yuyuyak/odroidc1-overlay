@@ -13,10 +13,11 @@ IUSE=""
 
 DEPEND="
 	>=app-eselect/eselect-opengl-1.2.6"
-RDEPEND="${DEPEND}
-	media-libs/mesa[gles1,gles2]"
+#RDEPEND="${DEPEND}
+#	media-libs/mesa[gles1,gles2]"
 
-PATCHES=(	"${FILESDIR}/0001-Fix-Makefiles.patch" )
+PATCHES=(	"${FILESDIR}/0001-Fix-Makefiles.patch"
+			"${FILESDIR}/pkgconfig.patch" )
 
 src_prepare() {
 	default
@@ -29,10 +30,14 @@ src_compile() {
 src_install() {
 	local opengl_imp="mali"
 	local opengl_dir="/usr/$(get_libdir)/opengl/${opengl_imp}"
-
+	local fbdev_imp="mali"
+	local fbdev_dir="/usr/$(get_libdir)/fbdev/${fbdev_imp}"
+	
 	dodir "${opengl_dir}/lib" "${opengl_dir}/include" "${opengl_dir}/extensions"
+	dodir "${fbdev_dir}/lib" "${fbdev_dir}/include" "${fbdev_dir}/extensions"
 
 	emake "libdir=${D}/${opengl_dir}/lib" "includedir=${D}/${opengl_dir}/include" -C x11 install
+	emake "libdir=${D}/${fbdev_dir}/lib" "includedir=${D}/${fbdev_dir}/include" -C fbdev install
 
 	# create symlink to libMali and libUMP into /usr/lib
 	dosym "opengl/${opengl_imp}/lib/libMali.so" "/usr/$(get_libdir)/libMali.so"
@@ -44,6 +49,10 @@ src_install() {
 
 	insinto "${opengl_dir}"
 	doins .gles-only
+	
+	# copy pkgconfig files
+#	insinto /usr/lib/pkgconfig
+#	doins pkgconfig/*
 }
 
 pkg_postinst() {
