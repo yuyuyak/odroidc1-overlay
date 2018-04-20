@@ -1,0 +1,48 @@
+--- a/pkgconfig/egl.pc	2017-12-31 15:15:34.687697364 -0800
++++ b/pkgconfig/egl.pc	2018-04-19 18:36:30.210283220 -0700
+@@ -1,7 +1,7 @@
+ prefix=/usr
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib/arm-linux-gnueabihf
+-includedir=${prefix}/include
++libdir=${prefix}/lib
++includedir=${libdir}/opengl/mali/include
+ 
+ Name: egl
+ Description: Mali EGL
+--- a/pkgconfig/glesv1.pc	2017-12-31 15:15:34.687697364 -0800
++++ b/pkgconfig/glesv1.pc	2018-04-19 18:33:18.549089118 -0700
+@@ -1,7 +1,7 @@
+ prefix=/usr
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib/arm-linux-gnueabihf
+-includedir=${prefix}/include
++libdir=${prefix}/lib
++includedir=${libdir}/opengl/mali/include
+ 
+ Name: glesv1
+ Description: Mali OpenGL ES 1.1
+--- a/pkgconfig/glesv1_cm.pc	2017-12-31 15:15:34.687697364 -0800
++++ b/pkgconfig/glesv1_cm.pc	2018-04-19 18:35:46.080013148 -0700
+@@ -1,7 +1,7 @@
+ prefix=/usr
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib/arm-linux-gnueabihf
+-includedir=${prefix}/include
++libdir=${prefix}/lib
++includedir=${libdir}/opengl/mali/include
+ 
+ Name: glesv1_cm
+ Description: Mali GLES v1
+--- a/pkgconfig/glesv2.pc	2017-12-31 15:15:34.687697364 -0800
++++ b/pkgconfig/glesv2.pc	2018-04-19 18:40:00.691491238 -0700
+@@ -1,7 +1,7 @@
+ prefix=/usr
+ exec_prefix=${prefix}
+-libdir=${prefix}/lib/arm-linux-gnueabihf
+-includedir=${prefix}/include
++libdir=${prefix}/lib
++includedir=${libdir}/opengl/mali/include
+ 
+ Name: glesv2
+ Description: Mali OpenGL ES 2.0
