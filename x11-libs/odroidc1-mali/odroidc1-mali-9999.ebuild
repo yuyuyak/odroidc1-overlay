@@ -51,8 +51,12 @@ src_install() {
 	doins .gles-only
 	
 	# copy pkgconfig files
-#	insinto /usr/lib/pkgconfig
-#	doins pkgconfig/*
+	insinto /usr/lib/opengl/mali/pkgconfig
+	doins pkgconfig/*
+	
+	dodir /etc/env.d
+	echo -e "PKG_CONFIG_PATH=/usr/lib/opengl/mali/pkgconfig" > \
+				"${D}"/etc/env.d/05mali-libs
 }
 
 pkg_postinst() {
