@@ -53,10 +53,18 @@ src_install() {
 	# copy pkgconfig files
 	insinto /usr/lib/opengl/mali/pkgconfig
 	doins pkgconfig/*
+	sed -i 's/opengl/fbdev/g' pkgconfig/*
+	insinto /usr/lib/fbdev/mali/pkgconfig
+	doins pkgconfig/*	
 	
 	dodir /etc/env.d
-	echo -e "PKG_CONFIG_PATH=/usr/lib/opengl/mali/pkgconfig" > \
+	if [[ -n '$(echo $PKG_CONFIG_PATH)' ]] && [[ -z '$(grep "/usr/lib/opengl/mali/pkgconfig")' ]];then
+		echo -e "PKG_CONFIG_PATH=/usr/lib/opengl/mali/pkgconfig:$PKG_CONFIG_PATH" > \
 				"${D}"/etc/env.d/05mali-libs
+	else
+		echo -e "PKG_CONFIG_PATH=/usr/lib/opengl/mali/pkgconfig:$(pkg-config --variable pc_path pkg-config)" > \
+				"${D}"/etc/env.d/05mali-libs
+	fi
 }
 
 pkg_postinst() {
