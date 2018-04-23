@@ -17,7 +17,8 @@ DEPEND="
 #	media-libs/mesa[gles1,gles2]"
 
 PATCHES=(	"${FILESDIR}/0001-Fix-Makefiles.patch"
-			"${FILESDIR}/pkgconfig.patch" )
+			"${FILESDIR}/pkgconfig.patch"
+			"${FILESDIR}/khr.patch" )
 
 src_prepare() {
 	default
